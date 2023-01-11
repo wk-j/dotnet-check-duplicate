@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 
-[MemoryDiagnoser]
+[MemoryDiagnoser()]
 public class DupChecker {
     [Params(1000, 10000, 100000, 1000000)]
     public int N;
@@ -37,6 +38,8 @@ public class DupChecker {
 
 class Program {
     static void Main(string[] args) {
-        var summary = BenchmarkRunner.Run<DupChecker>();
+        // var summary = BenchmarkRunner.Run<DupChecker>();
+        var config = ManualConfig.Create(DefaultConfig.Instance);
+        var summary = BenchmarkRunner.Run<DupChecker>(config);
     }
 }
