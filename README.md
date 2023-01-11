@@ -5,14 +5,14 @@ dotnet run -c Release --project src/CheckDuplicate
 ```
 
 ```
-| Method            | N       |         Mean |      Error |     StdDev |
-| ----------------- | ------- | -----------: | ---------: | ---------: |
-| HashSetCheck      | 1000    |     10.94 us |   0.119 us |   0.093 us |
-| LinqDistinctCheck | 1000    |     22.88 us |   0.451 us |   0.554 us |
-| HashSetCheck      | 10000   |    120.17 us |   2.065 us |   3.724 us |
-| LinqDistinctCheck | 10000   |    272.83 us |   3.530 us |   3.130 us |
-| HashSetCheck      | 100000  |  1,131.18 us |   8.561 us |   8.008 us |
-| LinqDistinctCheck | 100000  |  2,306.77 us |  22.114 us |  19.603 us |
-| HashSetCheck      | 1000000 | 11,866.07 us |  71.303 us |  55.669 us |
-| LinqDistinctCheck | 1000000 | 28,867.19 us | 239.700 us | 212.487 us |
+| Method            | N       |         Mean |      Error |       StdDev |     Gen0 |     Gen1 |     Gen2 |  Allocated |
+| ----------------- | ------- | -----------: | ---------: | -----------: | -------: | -------: | -------: | ---------: |
+| HashSetCheck      | 1000    |     10.89 us |   0.212 us |     0.198 us |        - |        - |        - |          - |
+| LinqDistinctCheck | 1000    |     22.84 us |   0.446 us |     1.160 us |   6.1340 |        - |        - |    25776 B |
+| HashSetCheck      | 10000   |    111.88 us |   0.915 us |     0.812 us |        - |        - |        - |          - |
+| LinqDistinctCheck | 10000   |    268.87 us |   2.351 us |     1.963 us |  66.4063 |  66.4063 |  66.4063 |   280573 B |
+| HashSetCheck      | 100000  |  1,124.18 us |   7.020 us |     5.862 us |        - |        - |        - |        2 B |
+| LinqDistinctCheck | 100000  |  2,290.82 us |  24.267 us |    21.512 us | 332.0313 | 332.0313 | 332.0313 |  2505902 B |
+| HashSetCheck      | 1000000 | 11,937.25 us | 123.192 us |   109.207 us |        - |        - |        - |       15 B |
+| LinqDistinctCheck | 1000000 | 28,405.93 us | 563.703 us | 1,138.707 us | 312.5000 | 312.5000 | 312.5000 | 26790126 B |
 ```
